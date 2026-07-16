@@ -202,10 +202,10 @@ function HomePage() {
                       <span className="text-[10px] text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full border border-green-400/20">All Tests Passed</span>
                     </div>
                     <div className="space-y-1.5 opacity-80">
-                      <div>> Compiling JavaScript...</div>
-                      <div>> Running Test Case 1: <span className="text-green-400">PASS (2ms)</span></div>
-                      <div>> Running Test Case 2: <span className="text-green-400">PASS (1ms)</span></div>
-                      <div>> Running Test Case 3: <span className="text-green-400">PASS (3ms)</span></div>
+                      <div>&gt; Compiling JavaScript...</div>
+                      <div>&gt; Running Test Case 1: <span className="text-green-400">PASS (2ms)</span></div>
+                      <div>&gt; Running Test Case 2: <span className="text-green-400">PASS (1ms)</span></div>
+                      <div>&gt; Running Test Case 3: <span className="text-green-400">PASS (3ms)</span></div>
                     </div>
                   </div>
                 </div>
