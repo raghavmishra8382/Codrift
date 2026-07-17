@@ -26,17 +26,25 @@ const allowedOrigins = [
   // local dev
   "http://localhost:5173",
   // production frontend (Render)
-  "https://hiremeet-mern-interview-platform.onrender.com",
-  // optional custom client url
-  ENV.CLIENT_URL,
+  "https://codrift-green.vercel.app",
+  // optional custom client url (no trailing slash)
+  ENV.CLIENT_URL ? ENV.CLIENT_URL.replace(/\/+$/, "") : undefined,
 ].filter(Boolean);
+
+// Ensure all origins are stored without a trailing slash for exact matching
+const normalizedOrigins = allowedOrigins.map(origin => origin.replace(/\/+$/, ""));
+
+// DEBUG: Log allowed origins and CLIENT_URL
+console.log('ENV.CLIENT_URL =', ENV.CLIENT_URL);
+console.log('allowedOrigins =', allowedOrigins);
 
 app.use(
   cors({
     origin(origin, callback) {
       // Allow non-browser requests (no Origin header)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
+      // Compare against normalized list (no trailing slash)
+      if (normalizedOrigins.includes(origin.replace(/\/+$/, ""))) return callback(null, true);
       return callback(new Error(`CORS blocked for origin: ${origin}`));
     },
     credentials: true,
